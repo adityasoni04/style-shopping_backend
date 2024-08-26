@@ -9,5 +9,4 @@ router.post('/forgot-password', forgotPassword);
 router.post('/reset-password', resetPassword);
 router.post('/logout', verifyToken, logout);
 
-//export
 module.exports = router;
