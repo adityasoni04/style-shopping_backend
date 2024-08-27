@@ -34,8 +34,15 @@ exports.createProduct = async (req, res) => {
     });
 
     try {
-        const newProduct = await product.save();
-        res.status(201).json(newProduct);
+        try {
+            const newProduct = await product.save();
+            console.log(newProduct);
+            res.status(201).json(newProduct);
+        } catch (error) {
+            console.error("Error saving product:", error);
+            res.status(400).json({ message: error.message });
+        }
+        
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
